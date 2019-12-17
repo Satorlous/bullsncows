@@ -9,6 +9,11 @@ namespace BullsNCows
     static class Program
     {
         /// <summary>
+        /// Основная форма
+        /// </summary>
+        public static Form Parent;
+
+        /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
@@ -16,7 +21,7 @@ namespace BullsNCows
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Parent());
         }
     }
 }

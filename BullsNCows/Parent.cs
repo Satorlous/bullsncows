@@ -57,6 +57,7 @@ namespace BullsNCows
         /// <param name="e"></param>
         private void TrainingGame(object sender, EventArgs e)
         {
+            int i = 0;
             GameWindow gameWindow = new GameWindow(true);
             gameWindow.Show();
         }

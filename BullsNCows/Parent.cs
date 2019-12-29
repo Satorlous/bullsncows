@@ -7,12 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MaterialSkin;
-using MaterialSkin.Controls;
 
 namespace BullsNCows
 {
-    public partial class Parent : Form
+    public partial class Parent : MaterialSkin.Controls.MaterialForm
     { 
 
         public Parent()

@@ -29,58 +29,70 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Parent));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.newGameButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.loadGameButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.trainingButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.ratingButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SuspendLayout();
             // 
-            // button1
+            // newGameButton
             // 
-            this.button1.Location = new System.Drawing.Point(73, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 36);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "НОВАЯ ИГРА";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.NewGame);
+            this.newGameButton.Depth = 0;
+            this.newGameButton.Location = new System.Drawing.Point(61, 86);
+            this.newGameButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.newGameButton.Name = "newGameButton";
+            this.newGameButton.Primary = true;
+            this.newGameButton.Size = new System.Drawing.Size(174, 39);
+            this.newGameButton.TabIndex = 8;
+            this.newGameButton.Text = "НОВАЯ ИГРА";
+            this.newGameButton.UseVisualStyleBackColor = true;
+            this.newGameButton.Click += new System.EventHandler(this.NewGame);
             // 
-            // button2
+            // loadGameButton
             // 
-            this.button2.Location = new System.Drawing.Point(73, 75);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(146, 36);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "ЗАГРУЗИТЬ ИГРУ";
-            this.button2.UseVisualStyleBackColor = true;
+            this.loadGameButton.Depth = 0;
+            this.loadGameButton.Location = new System.Drawing.Point(61, 131);
+            this.loadGameButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.loadGameButton.Name = "loadGameButton";
+            this.loadGameButton.Primary = true;
+            this.loadGameButton.Size = new System.Drawing.Size(174, 39);
+            this.loadGameButton.TabIndex = 9;
+            this.loadGameButton.Text = "ЗАГРУЗИТЬ ИГРУ";
+            this.loadGameButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // trainingButton
             // 
-            this.button3.Location = new System.Drawing.Point(73, 117);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(146, 36);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "ПРОЙТИ ОБУЧЕНИЕ";
-            this.button3.UseVisualStyleBackColor = true;
+            this.trainingButton.Depth = 0;
+            this.trainingButton.Location = new System.Drawing.Point(61, 176);
+            this.trainingButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.trainingButton.Name = "trainingButton";
+            this.trainingButton.Primary = true;
+            this.trainingButton.Size = new System.Drawing.Size(174, 39);
+            this.trainingButton.TabIndex = 9;
+            this.trainingButton.Text = "ПРОЙТИ ОБУЧЕНИЕ";
+            this.trainingButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // ratingButton
             // 
-            this.button4.Location = new System.Drawing.Point(73, 159);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(146, 36);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "РЕЙТИНГ";
-            this.button4.UseVisualStyleBackColor = true;
+            this.ratingButton.Depth = 0;
+            this.ratingButton.Location = new System.Drawing.Point(61, 221);
+            this.ratingButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ratingButton.Name = "ratingButton";
+            this.ratingButton.Primary = true;
+            this.ratingButton.Size = new System.Drawing.Size(174, 39);
+            this.ratingButton.TabIndex = 9;
+            this.ratingButton.Text = "РЕЙТИНГ";
+            this.ratingButton.UseVisualStyleBackColor = true;
             // 
             // Parent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 226);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(299, 289);
+            this.Controls.Add(this.ratingButton);
+            this.Controls.Add(this.trainingButton);
+            this.Controls.Add(this.loadGameButton);
+            this.Controls.Add(this.newGameButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Parent";
             this.Text = "Игра \"Быки и Коровы\"";
@@ -90,10 +102,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+
+        private MaterialSkin.Controls.MaterialRaisedButton newGameButton;
+        private MaterialSkin.Controls.MaterialRaisedButton loadGameButton;
+        private MaterialSkin.Controls.MaterialRaisedButton trainingButton;
+        private MaterialSkin.Controls.MaterialRaisedButton ratingButton;
     }
 }
 

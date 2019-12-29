@@ -56,6 +56,11 @@ namespace BullsNCows
                 {
                     inputListBox.Items.Insert(0, number);
                     var response = controller.CheckNumber(number);
+                    if(response == null)
+                    {
+                        MessageBox.Show("Некоректные данные");
+                        return;
+                    }
                     int countBulls = response["Bulls"].Count(x => x == 1);
                     bullCountLabel.Text = countBulls.ToString();
                     cowCountLabel.Text = response["Cows"].Count(x => x == 1).ToString();

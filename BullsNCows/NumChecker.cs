@@ -18,17 +18,20 @@ namespace BullsNCows
         {
             int[] Bulls = new int[NumberSave.Length];
             int[] Cows = new int[NumberSave.Length];
-            for(int i =0;i < NumberSave.Length;i++)
+            for (int i =0; i < NumberSave.Length;i++)
             {
-                if (NumberSave[i] == Number[i])
+                for(int j = 0; j < NumberSave.Length;j++)
                 {
-                    Bulls[i] = 1;
-                }
-                for (int j = i; NumberSave[i] != Number[i] && j < Number.Length; j++)
-                {
-                    if (NumberSave[i] == Number[j])
+                    if(Number[j] == NumberSave[i])
                     {
-                        Cows[j] = 1;
+                        if (i == j)
+                        {
+                            Bulls[i] = 1;
+                        }
+                        else
+                        {
+                            Cows[i] = 1;
+                        }
                     }
                 }
             }

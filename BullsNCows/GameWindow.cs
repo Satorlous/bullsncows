@@ -15,15 +15,18 @@ namespace BullsNCows
         public int[] number;
         public bool[] cow;
         public bool[] bull;
+        Controller controller;
 
         public GameWindow()
         {
             InitializeComponent();
+            controller = new Controller();
         }
 
         private void GameWindow_Load(object sender, EventArgs e)
         {
             Program.Parent.Hide();
+            controller.StartGame("ad");
         }
 
         private void GameWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -37,18 +40,41 @@ namespace BullsNCows
         }
 
         private void InputTextBox_KeyUp(object sender, KeyEventArgs e)
-        {            
+        {      
             if (e.KeyData == Keys.Enter)
             {
-                if (int.TryParse(inputTextBox.Text, out int inputNumber) && inputNumber.ToString().Length == 4)
+                string number = inputTextBox.Text.Trim();
+                if (number.Length == 4)
                 {
-                    inputTextBox.Clear();
-                    inputListBox.Items.Insert(0, inputNumber);
+                    inputListBox.Items.Insert(0, number);
+                    var response = controller.CheckNumber(number);
+                    int countBulls = response["Bulls"].Count(x => x == 1);
+                    bullCountLabel.Text = countBulls.ToString();
+                    cowCountLabel.Text = response["Cows"].Count(x => x == 1).ToString();
+                    if(countBulls == 4)
+                    {
+                        MessageBox.Show("Поздравлем! Вы выйграли!");
+                    }
                 }
-                else
+                inputTextBox.Clear();
+            }
+            if (inputListBox.Items.Count > 0 && e.KeyData == Keys.Down)
+            {
+                int index = inputListBox.Items.IndexOf(inputTextBox.Text);
+                if(index == 0 || index == -1)
                 {
-                    inputTextBox.Clear();
+                    index = inputListBox.Items.Count;
                 }
+                inputTextBox.Text = inputListBox.Items[index - 1].ToString();
+            }
+            if (inputListBox.Items.Count > 0 && e.KeyData == Keys.Up)
+            {
+                int index = inputListBox.Items.IndexOf(inputTextBox.Text);
+                if (index == (inputListBox.Items.Count - 1))
+                {
+                    index = -1;
+                }
+                inputTextBox.Text = inputListBox.Items[index + 1].ToString();
             }
         }
     }

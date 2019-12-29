@@ -11,11 +11,11 @@ namespace BullsNCows
         /// <summary>
         /// Экземпляр игры
         /// </summary>
-        Game Game;
+        private Game Game;
         /// <summary>
         /// Экземпляр журнала
         /// </summary>
-        Journal Journal;
+        private Journal Journal;
 
         /// <summary>
         /// Старт игры
@@ -39,10 +39,18 @@ namespace BullsNCows
                 return null;
             }
             int[] Number = new int[number.Length];
+            for(int i =0; i< Number.Length; i++)
+            {
+                Number[i] = -1;
+            }
             for(int i =0; i < number.Length; i++)
             {
                 if(int.TryParse(number[i].ToString(), out int a))
                 {
+                    if(Number.Contains(a))
+                    {
+                        return null;
+                    }
                     Number[i] = a;
                 }
                 else

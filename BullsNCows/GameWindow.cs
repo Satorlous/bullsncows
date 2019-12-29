@@ -80,6 +80,7 @@ namespace BullsNCows
                     index = inputListBox.Items.Count;
                 }
                 inputTextBox.Text = inputListBox.Items[index - 1].ToString();
+                inputTextBox.SelectionStart = inputTextBox.Text.Length;
             }
             if (inputListBox.Items.Count > 0 && e.KeyData == Keys.Up)
             {
@@ -89,6 +90,7 @@ namespace BullsNCows
                     index = -1;
                 }
                 inputTextBox.Text = inputListBox.Items[index + 1].ToString();
+                inputTextBox.SelectionStart = inputTextBox.Text.Length;
             }
         }
 

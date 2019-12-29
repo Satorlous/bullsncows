@@ -39,5 +39,27 @@ namespace BullsNCows
             gameWindow.Show();
         }
 
+        /// <summary>
+        /// Загрузка существующей игры
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadGame(object sender, EventArgs e)
+        {
+            LoadWindow loadWindow = new LoadWindow();
+            loadWindow.Show();
+        }
+
+        /// <summary>
+        /// Инициализация новой тренировочной игры
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TrainingGame(object sender, EventArgs e)
+        {
+            GameWindow gameWindow = new GameWindow(true);
+            gameWindow.Show();
+        }
+
     }
 }

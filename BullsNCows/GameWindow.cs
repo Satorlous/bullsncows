@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,17 +15,24 @@ namespace BullsNCows
         public int[] number;
         public bool[] cow;
         public bool[] bull;
+        private bool isTraining;
         Controller controller;
 
-        public GameWindow()
+        public GameWindow(bool isTraining = false)
         {
+            this.isTraining = isTraining;
             InitializeComponent();
             controller = new Controller();
         }
 
         private void GameWindow_Load(object sender, EventArgs e)
-        {
+        {            
             Program.Parent.Hide();
+            if (isTraining)
+            {
+                tipButton.Show();                
+                this.Text = "Обучение";
+            }
             controller.StartGame("ad");
         }
 
@@ -43,6 +50,7 @@ namespace BullsNCows
         {      
             if (e.KeyData == Keys.Enter)
             {
+                lastNumberPanel.Show();
                 string number = inputTextBox.Text.Trim();
                 if (number.Length == 4)
                 {
@@ -51,6 +59,7 @@ namespace BullsNCows
                     int countBulls = response["Bulls"].Count(x => x == 1);
                     bullCountLabel.Text = countBulls.ToString();
                     cowCountLabel.Text = response["Cows"].Count(x => x == 1).ToString();
+                    SetLastNumber(inputNumber);
                     if(countBulls == 4)
                     {
                         MessageBox.Show("Поздравлем! Вы выйграли!");
@@ -76,6 +85,14 @@ namespace BullsNCows
                 }
                 inputTextBox.Text = inputListBox.Items[index + 1].ToString();
             }
+        }
+
+        private void SetLastNumber(int inputNumber)
+        {
+            labelNum1.Text = inputNumber.ToString()[0].ToString();
+            labelNum2.Text = inputNumber.ToString()[1].ToString();
+            labelNum3.Text = inputNumber.ToString()[2].ToString();
+            labelNum4.Text = inputNumber.ToString()[3].ToString();
         }
     }
 }

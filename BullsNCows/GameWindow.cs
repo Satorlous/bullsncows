@@ -59,7 +59,7 @@ namespace BullsNCows
                     int countBulls = response["Bulls"].Count(x => x == 1);
                     bullCountLabel.Text = countBulls.ToString();
                     cowCountLabel.Text = response["Cows"].Count(x => x == 1).ToString();
-                    SetLastNumber(inputNumber);
+                    SetLastNumber(number);
                     if(countBulls == 4)
                     {
                         MessageBox.Show("Поздравлем! Вы выйграли!");
@@ -87,12 +87,12 @@ namespace BullsNCows
             }
         }
 
-        private void SetLastNumber(int inputNumber)
+        private void SetLastNumber(string inputNumber)
         {
-            labelNum1.Text = inputNumber.ToString()[0].ToString();
-            labelNum2.Text = inputNumber.ToString()[1].ToString();
-            labelNum3.Text = inputNumber.ToString()[2].ToString();
-            labelNum4.Text = inputNumber.ToString()[3].ToString();
+            labelNum1.Text = inputNumber[0].ToString();
+            labelNum2.Text = inputNumber[1].ToString();
+            labelNum3.Text = inputNumber[2].ToString();
+            labelNum4.Text = inputNumber[3].ToString();
         }
     }
 }

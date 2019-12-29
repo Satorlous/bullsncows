@@ -77,6 +77,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BullsCows.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controller.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Journal.cs">
       <DependentUpon>BullsCows.tt</DependentUpon>
     </Compile>
@@ -95,6 +97,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="NumberGenerator.cs" />
+    <Compile Include="NumChecker.cs" />
     <Compile Include="Parent.cs">
       <SubType>Form</SubType>
     </Compile>

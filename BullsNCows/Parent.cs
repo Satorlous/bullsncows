@@ -57,9 +57,14 @@ namespace BullsNCows
         /// <param name="e"></param>
         private void TrainingGame(object sender, EventArgs e)
         {
-            int i = 0;
             GameWindow gameWindow = new GameWindow(true);
             gameWindow.Show();
+        }
+
+        private void ShowRating(object sender, EventArgs e)
+        {
+            Rating ratingWindow = new Rating();
+            ratingWindow.Show();
         }
 
         private void Parent_FormClosing(object sender, FormClosingEventArgs e)

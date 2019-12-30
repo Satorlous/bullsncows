@@ -37,7 +37,7 @@ namespace BullsNCows
             if (isTraining)
             {
                 tipToggler.Show();
-                this.Text = "Обучение";
+                this.Text = "Обучение";               
             }
             currentNumberLabels.Add(labelNum1);
             currentNumberLabels.Add(labelNum2);
@@ -45,6 +45,16 @@ namespace BullsNCows
             currentNumberLabels.Add(labelNum4);
             controller.StartGame("placeholder");
             inputTextBox.Select();
+        }
+
+        private void GameWindow_Shown(object sender, EventArgs e)
+        {
+            if (isTraining)
+            {
+                var text = "При включенных подсказках коровы подсвечиваются оранжевым цветом, а быки - зеленым.";
+                var caption = "Добро пожаловать в обучение!";
+                MessageBox.Show(text, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void GameWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -184,6 +194,6 @@ namespace BullsNCows
                 bulls += i.ToString() + " ";
             }
             MessageBox.Show(string.Format("Коровы: {0}\r\nБыки: {1}", cows, bulls));
-        }
+        }       
     }
 }

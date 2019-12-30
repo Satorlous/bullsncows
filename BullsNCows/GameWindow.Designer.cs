@@ -160,6 +160,7 @@ namespace BullsNCows
             this.inputTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.inputTextBox.Location = new System.Drawing.Point(0, 0);
             this.inputTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.inputTextBox.Multiline = false;
             this.inputTextBox.Name = "inputTextBox";
             this.inputTextBox.Size = new System.Drawing.Size(209, 49);
             this.inputTextBox.TabIndex = 4;
@@ -197,6 +198,7 @@ namespace BullsNCows
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameWindow_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameWindow_FormClosed);
             this.Load += new System.EventHandler(this.GameWindow_Load);
+            this.Shown += new System.EventHandler(this.GameWindow_Shown);
             this.footerPanel.ResumeLayout(false);
             this.footerPanel.PerformLayout();
             this.mainPanel.ResumeLayout(false);

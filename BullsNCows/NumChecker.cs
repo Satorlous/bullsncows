@@ -11,26 +11,26 @@ namespace BullsNCows
         /// <summary>
         /// Проверка загаданного числа и введенного
         /// </summary>
-        /// <param name="NumberSave">Загаданное число</param>
+        /// <param name="Answer">Загаданное число</param>
         /// <param name="Number">Введенное число</param>
         /// <returns></returns>
-        public static Dictionary<string,int[]> CheckNumber(int[] NumberSave, int[] Number)
+        public static Dictionary<string,int[]> CheckNumber(int[] Answer, int[] Number)
         {
-            int[] Bulls = new int[NumberSave.Length];
-            int[] Cows = new int[NumberSave.Length];
-            for (int i =0; i < NumberSave.Length;i++)
+            int[] Bulls = new int[Answer.Length];
+            int[] Cows = new int[Answer.Length];
+            for (int i =0; i < Answer.Length;i++)
             {
-                for(int j = 0; j < NumberSave.Length;j++)
+                for(int j = 0; j < Number.Length;j++)
                 {
-                    if(Number[j] == NumberSave[i])
+                    if(Number[j] == Answer[i])
                     {
                         if (i == j)
                         {
-                            Bulls[i] = 1;
+                            Bulls[j] = 1;
                         }
                         else
                         {
-                            Cows[i] = 1;
+                            Cows[j] = 1;
                         }
                     }
                 }

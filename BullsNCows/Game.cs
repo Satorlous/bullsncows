@@ -15,7 +15,7 @@ namespace BullsNCows
         /// <summary>
         /// Сгенерированное число
         /// </summary>
-        public int[] NumberSave { get; set; }
+        public int[] Answer { get; set; }
         /// <summary>
         /// Введенное число
         /// </summary>
@@ -41,7 +41,7 @@ namespace BullsNCows
         public Dictionary<string, int[]> CheckNumber(int[] _Number)
         {
             Number = _Number;
-            return NumChecker.CheckNumber(NumberSave, Number);
+            return NumChecker.CheckNumber(Answer, Number);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace BullsNCows
         /// </summary>
         private void GetNumber()
         {
-            NumberSave = NumberGenerator.GetNumber();
+            Answer = NumberGenerator.GetNumber();
         }
 
         /// <summary>

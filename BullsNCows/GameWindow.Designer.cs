@@ -31,13 +31,12 @@ namespace BullsNCows
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameWindow));
             this.labelNum1 = new System.Windows.Forms.Label();
             this.labelNum2 = new System.Windows.Forms.Label();
             this.labelNum3 = new System.Windows.Forms.Label();
             this.labelNum4 = new System.Windows.Forms.Label();
-            this.counterPanel = new System.Windows.Forms.Panel();
+            this.footerPanel = new System.Windows.Forms.Panel();
             this.tipToggler = new MaterialSkin.Controls.MaterialCheckBox();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.inputListBox = new System.Windows.Forms.ListBox();
@@ -45,8 +44,7 @@ namespace BullsNCows
             this.inputTextBoxPanel = new System.Windows.Forms.Panel();
             this.inputTextBox = new System.Windows.Forms.RichTextBox();
             this.lastNumberPanel = new System.Windows.Forms.Panel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.counterPanel.SuspendLayout();
+            this.footerPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.headerPanel.SuspendLayout();
             this.inputTextBoxPanel.SuspendLayout();
@@ -85,19 +83,20 @@ namespace BullsNCows
             this.labelNum4.Size = new System.Drawing.Size(0, 20);
             this.labelNum4.TabIndex = 0;
             // 
-            // counterPanel
+            // footerPanel
             // 
-            this.counterPanel.Controls.Add(this.tipToggler);
-            this.counterPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.counterPanel.Location = new System.Drawing.Point(0, 311);
-            this.counterPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.counterPanel.Name = "counterPanel";
-            this.counterPanel.Size = new System.Drawing.Size(307, 53);
-            this.counterPanel.TabIndex = 0;
+            this.footerPanel.Controls.Add(this.tipToggler);
+            this.footerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.footerPanel.Location = new System.Drawing.Point(0, 311);
+            this.footerPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.footerPanel.Name = "footerPanel";
+            this.footerPanel.Size = new System.Drawing.Size(307, 53);
+            this.footerPanel.TabIndex = 0;
             // 
             // tipToggler
             // 
             this.tipToggler.AutoSize = true;
+            this.tipToggler.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tipToggler.Depth = 0;
             this.tipToggler.Font = new System.Drawing.Font("Roboto", 10F);
             this.tipToggler.Location = new System.Drawing.Point(9, 14);
@@ -188,7 +187,7 @@ namespace BullsNCows
             this.ClientSize = new System.Drawing.Size(307, 364);
             this.Controls.Add(this.headerPanel);
             this.Controls.Add(this.mainPanel);
-            this.Controls.Add(this.counterPanel);
+            this.Controls.Add(this.footerPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -198,8 +197,8 @@ namespace BullsNCows
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameWindow_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameWindow_FormClosed);
             this.Load += new System.EventHandler(this.GameWindow_Load);
-            this.counterPanel.ResumeLayout(false);
-            this.counterPanel.PerformLayout();
+            this.footerPanel.ResumeLayout(false);
+            this.footerPanel.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.headerPanel.ResumeLayout(false);
             this.inputTextBoxPanel.ResumeLayout(false);
@@ -210,7 +209,7 @@ namespace BullsNCows
         }
 
         #endregion        
-        private System.Windows.Forms.Panel counterPanel;
+        private System.Windows.Forms.Panel footerPanel;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.ListBox inputListBox;
         private System.Windows.Forms.Panel headerPanel;
@@ -222,6 +221,5 @@ namespace BullsNCows
         private System.Windows.Forms.Panel inputTextBoxPanel;
         private System.Windows.Forms.RichTextBox inputTextBox;
         private MaterialSkin.Controls.MaterialCheckBox tipToggler;
-        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

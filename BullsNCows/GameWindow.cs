@@ -36,7 +36,7 @@ namespace BullsNCows
             Program.Parent.Hide();
             if (isTraining)
             {
-                tipToggler.Show();                
+                tipToggler.Show();
                 this.Text = "Обучение";
             }
             currentNumberLabels.Add(labelNum1);
@@ -87,7 +87,7 @@ namespace BullsNCows
                     if(countBulls == 4)
                     {
                         var title = "Поздравлем!";
-                        var message = "Вы выйграли!";                       
+                        var message = "Вы выиграли!";                       
                         DialogResult result = MessageBox.Show(message, title, MessageBoxButtons.OK);
                         if (result == DialogResult.OK)
                         {
@@ -169,6 +169,21 @@ namespace BullsNCows
                 ShowTip();
             else
                 HideTip();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            var cows = "";
+            var bulls = "";
+            foreach(var i in this.cows)
+            {
+                cows += i.ToString() + " ";
+            }
+            foreach (var i in this.bulls)
+            {
+                bulls += i.ToString() + " ";
+            }
+            MessageBox.Show(string.Format("Коровы: {0}\r\nБыки: {1}", cows, bulls));
         }
     }
 }

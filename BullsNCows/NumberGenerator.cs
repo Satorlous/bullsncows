@@ -53,7 +53,7 @@ namespace BullsNCows
                     Number[current++] = buf;
                 }
             }
-            return Number;
+            return Number;           
         }
 
         /// <summary>

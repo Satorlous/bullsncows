@@ -44,6 +44,7 @@ namespace BullsNCows
                             Name = game.Name,
                             Score = game.Score,
                             History = JsonConvert.SerializeObject(game.History),
+                            End = game.EndGame,
                         };
                         db.Records.Add(journal);
                         db.SaveChanges();

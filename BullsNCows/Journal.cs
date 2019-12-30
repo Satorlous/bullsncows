@@ -27,6 +27,8 @@ namespace BullsNCows
 
         public int Score { get; set; }
 
+        public bool End { get; set; }
+
         public void SaveGame(Game game)
         {
             JournalContext.Add(game);

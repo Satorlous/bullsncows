@@ -12,12 +12,14 @@ namespace BullsNCows
 {
     public partial class GameWindow : MaterialSkin.Controls.MaterialForm
     {
-        public int[] number;
+        public string number;
         private List<string> history;
-        public bool[] cow;
-        public bool[] bull;
+        public int[] cows;
+        public int[] bulls;
         private bool isTraining;
+        private bool isTipEnabled = false;
         Controller controller;
+        List<Label> currentNumberLabels;
 
         public GameWindow(bool isTraining = false)
         {
@@ -25,6 +27,7 @@ namespace BullsNCows
             InitializeComponent();
             controller = new Controller();
             history = new List<string>();
+            currentNumberLabels = new List<Label>();
         }
 
         private void GameWindow_Load(object sender, EventArgs e)
@@ -32,10 +35,14 @@ namespace BullsNCows
             Program.Parent.Hide();
             if (isTraining)
             {
-                tipButton.Show();                
+                tipToggler.Show();                
                 this.Text = "Обучение";
             }
-            controller.StartGame("ad");
+            currentNumberLabels.Add(labelNum1);
+            currentNumberLabels.Add(labelNum2);
+            currentNumberLabels.Add(labelNum3);
+            currentNumberLabels.Add(labelNum4);
+            controller.StartGame("placeholder");
             inputTextBox.Select();
         }
 
@@ -52,26 +59,30 @@ namespace BullsNCows
         private void InputTextBox_KeyUp(object sender, KeyEventArgs e)
         {      
             if (e.KeyData == Keys.Enter)
-            {
-                lastNumberPanel.Show();
-                string number = inputTextBox.Text.Trim();
-                if (number.Length == 4)
-                {                    
+            {               
+                string input = inputTextBox.Text.Trim();
+                if (input.Length == 4)
+                {
+                    this.number = input;
                     var response = controller.CheckNumber(number);
                     if(response == null)
                     {
                         MessageBox.Show("Некоректные данные");
                         return;
                     }
-                    int countBulls = response["Bulls"].Count(x => x == 1);
-                    int countCows = response["Cows"].Count(x => x == 1);
-                    bullCountLabel.Text = countBulls.ToString();
-                    cowCountLabel.Text = countCows.ToString();
+                    lastNumberPanel.Show();
+                    this.bulls = response["Bulls"];
+                    this.cows = response["Cows"];
+                    int countBulls = bulls.Count(x => x == 1);
+                    int countCows = cows.Count(x => x == 1);
                     string item = string.Format("{0}. {1,-12:N10} Быков: {2}, Коров: {3}", inputListBox.Items.Count+1, number, countBulls, countCows);
                     inputListBox.Items.Insert(0, item);
                     history.Insert(0, number);
-
                     SetLastNumber(number);
+                    if (isTraining && isTipEnabled)
+                    {
+                        ShowTip();
+                    }
                     if(countBulls == 4)
                     {
                         var title = "Поздравлем!";
@@ -85,6 +96,7 @@ namespace BullsNCows
                 }
                 inputTextBox.Clear();
             }
+
             if (history.Count > 0 && e.KeyData == Keys.Down)
             {
                 int index = history.IndexOf(inputTextBox.Text);
@@ -113,6 +125,50 @@ namespace BullsNCows
             labelNum2.Text = inputNumber[1].ToString();
             labelNum3.Text = inputNumber[2].ToString();
             labelNum4.Text = inputNumber[3].ToString();
+        }
+
+        private void ShowTip()
+        {
+            if (number != null)
+            {
+                foreach (var label in currentNumberLabels)
+                {
+                    var pos = currentNumberLabels.IndexOf(label);
+                    var status = CheckMatch(pos);
+                    if (status == "cow")
+                        label.ForeColor = Color.Orange;
+                    if (status == "bull")
+                        label.ForeColor = Color.Green;
+                    if (status == "blank")
+                        label.ForeColor = Color.Black;
+                }
+            }
+        }
+
+        private void HideTip()
+        {
+            foreach (var label in currentNumberLabels)
+            {
+                label.ForeColor = Color.Black;
+            }
+        }
+
+        private string CheckMatch(int pos)
+        {
+            if (cows[pos] == 1)
+                return "cow";
+            if (bulls[pos] == 1)
+                return "bull";
+            return "blank";
+        }
+
+        private void TipToggler_CheckedChanged(object sender, EventArgs e)
+        {
+            isTipEnabled = !isTipEnabled;            
+            if (isTipEnabled)
+                ShowTip();
+            else
+                HideTip();
         }
     }
 }

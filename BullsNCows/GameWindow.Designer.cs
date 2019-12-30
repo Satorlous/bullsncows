@@ -218,7 +218,6 @@ namespace BullsNCows
             this.Name = "GameWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Игра";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameWindow_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameWindow_FormClosed);
             this.Load += new System.EventHandler(this.GameWindow_Load);
             this.Shown += new System.EventHandler(this.GameWindow_Shown);

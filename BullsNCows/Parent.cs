@@ -11,8 +11,7 @@ using System.Windows.Forms;
 namespace BullsNCows
 {
     public partial class Parent : MaterialSkin.Controls.MaterialForm
-    { 
-
+    {
         public Parent()
         {
             InitializeComponent();
@@ -35,7 +34,7 @@ namespace BullsNCows
         /// <param name="e"></param>
         private void NewGame(object sender, EventArgs e)
         {
-            GameWindow gameWindow = new GameWindow();
+            GameWindow gameWindow = new GameWindow(playerNameTextBox.Text, false);
             gameWindow.Show();
         }
 
@@ -57,13 +56,8 @@ namespace BullsNCows
         /// <param name="e"></param>
         private void TrainingGame(object sender, EventArgs e)
         {
-            int i = 0;
-            GameWindow gameWindow = new GameWindow(true);
+            GameWindow gameWindow = new GameWindow(playerNameTextBox.Text, true);
             gameWindow.Show();
-        }
-
-        private void Parent_FormClosing(object sender, FormClosingEventArgs e)
-        {
         }
     }
 }

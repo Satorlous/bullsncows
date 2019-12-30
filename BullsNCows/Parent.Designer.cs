@@ -87,6 +87,7 @@
             this.ratingButton.TabIndex = 9;
             this.ratingButton.Text = "РЕЙТИНГ";
             this.ratingButton.UseVisualStyleBackColor = true;
+            this.ratingButton.Click += new System.EventHandler(this.ShowRating);
             // 
             // playerNameTextBox
             // 

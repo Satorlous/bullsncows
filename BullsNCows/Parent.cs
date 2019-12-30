@@ -59,5 +59,11 @@ namespace BullsNCows
             GameWindow gameWindow = new GameWindow(playerNameTextBox.Text, true);
             gameWindow.Show();
         }
+
+        private void ShowRating(object sender, EventArgs e)
+        {
+            Rating ratingWindow = new Rating();
+            ratingWindow.Show();
+        }
     }
 }

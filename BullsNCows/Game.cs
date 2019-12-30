@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BullsNCows
 {
-    class Game
+    public class Game
     {
         /// <summary>
         /// Имя игрока
         /// </summary>
-        public string Name { get; }
+        public string PlayerName { get; }
         /// <summary>
         /// Сгенерированное число
         /// </summary>
@@ -23,15 +23,25 @@ namespace BullsNCows
         /// <summary>
         /// Счет игрока
         /// </summary>
-        private int Score;
+        public int Score { get; set; }
+        /// <summary>
+        /// Закончилась игра или нет
+        /// </summary>
+        public bool EndGame { get; set; }
+
+        public List<string> History { get; set; }
+
+        private Dictionary<string, int[]> CowsBulls;
 
         /// <summary>
         /// Создание экземпляра игры с именем игрока
         /// </summary>
-        /// <param name="name">Имя игрока</param>
-        public Game(string name)
+        /// <param name="playername">Имя игрока</param>
+        public Game(string playername)
         {
-            Name = name;
+            PlayerName = playername;
+            History = new List<string>();
+            CowsBulls = new Dictionary<string, int[]>();
         }
 
         /// <summary>
@@ -41,7 +51,9 @@ namespace BullsNCows
         public Dictionary<string, int[]> CheckNumber(int[] _Number)
         {
             Number = _Number;
-            return NumChecker.CheckNumber(Answer, Number);
+            CowsBulls = NumChecker.CheckNumber(Answer, Number);
+            SaveScore();
+            return CowsBulls;
         }
 
         /// <summary>
@@ -67,6 +79,12 @@ namespace BullsNCows
         private void SaveScore()
         {
             Score += 1;
+            History.Insert(0,
+                String.Format("{0} {1} {2}",
+                    String.Join("",Number),
+                    CowsBulls["Bulls"].Count(x => x ==1), 
+                    CowsBulls["Cows"].Count(x => x == 1))
+                );
         }
     }
 }

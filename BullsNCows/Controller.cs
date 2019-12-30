@@ -11,7 +11,9 @@ namespace BullsNCows
         /// <summary>
         /// Экземпляр игры
         /// </summary>
-        private Game Game;        
+        private Game Game;
+
+        private Journal Journal;
 
         /// <summary>
         /// Старт игры
@@ -21,6 +23,7 @@ namespace BullsNCows
         {
             Game = new Game(name);
             Game.StartGame();
+            Journal = new Journal();
         }
 
         /// <summary>
@@ -34,11 +37,11 @@ namespace BullsNCows
                 return null;
             }
             int[] Number = new int[number.Length];
-            for(int i = 0; i< Number.Length; i++)
+            for(int i =0; i< Number.Length; i++)
             {
                 Number[i] = -1;
             }
-            for(int i = 0; i < number.Length; i++)
+            for(int i =0; i < number.Length; i++)
             {
                 if(int.TryParse(number[i].ToString(), out int a))
                 {
@@ -61,7 +64,7 @@ namespace BullsNCows
         /// </summary>
         public void SaveGame()
         {
-
+            Journal.SaveGame(Game);
         }
 
         /// <summary>

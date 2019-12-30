@@ -33,7 +33,7 @@
             this.loadGameButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.trainingButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.ratingButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.playerNameTextBox = new System.Windows.Forms.TextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
@@ -87,15 +87,16 @@
             this.ratingButton.TabIndex = 9;
             this.ratingButton.Text = "РЕЙТИНГ";
             this.ratingButton.UseVisualStyleBackColor = true;
+            this.ratingButton.Click += new System.EventHandler(this.ShowRating);
             // 
-            // textBox1
+            // playerNameTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(12, 93);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(275, 26);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.Text = "Игрок1";
+            this.playerNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.playerNameTextBox.Location = new System.Drawing.Point(12, 93);
+            this.playerNameTextBox.Name = "playerNameTextBox";
+            this.playerNameTextBox.Size = new System.Drawing.Size(275, 26);
+            this.playerNameTextBox.TabIndex = 10;
+            this.playerNameTextBox.Text = "Игрок1";
             // 
             // materialLabel1
             // 
@@ -117,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(299, 319);
             this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.playerNameTextBox);
             this.Controls.Add(this.ratingButton);
             this.Controls.Add(this.trainingButton);
             this.Controls.Add(this.loadGameButton);
@@ -138,7 +139,7 @@
         private MaterialSkin.Controls.MaterialRaisedButton loadGameButton;
         private MaterialSkin.Controls.MaterialRaisedButton trainingButton;
         private MaterialSkin.Controls.MaterialRaisedButton ratingButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox playerNameTextBox;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }

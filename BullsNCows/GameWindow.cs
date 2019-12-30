@@ -14,6 +14,7 @@ namespace BullsNCows
     {
         public string number;
         private List<string> history;
+        private string playerName;
         public int[] cows;
         public int[] bulls;
         private bool isTraining;
@@ -21,14 +22,14 @@ namespace BullsNCows
         Controller controller;
         List<Label> currentNumberLabels;
 
-        public GameWindow(bool isTraining = false)
-        {
-            this.isTraining = isTraining;
+        public GameWindow(string playerName, bool isTraining = false)
+        {           
             InitializeComponent();
+            this.playerName = playerName;
+            this.isTraining = isTraining;
             controller = new Controller();
             history = new List<string>();
             currentNumberLabels = new List<Label>();
-
         }
 
         private void GameWindow_Load(object sender, EventArgs e)
@@ -36,6 +37,7 @@ namespace BullsNCows
             Program.Parent.Hide();
             if (isTraining)
             {
+                SaveGameButton.Hide();
                 tipToggler.Show();
                 this.Text = "Обучение";               
             }
@@ -43,7 +45,7 @@ namespace BullsNCows
             currentNumberLabels.Add(labelNum2);
             currentNumberLabels.Add(labelNum3);
             currentNumberLabels.Add(labelNum4);
-            controller.StartGame("placeholder");
+            controller.StartGame(playerName);
             inputTextBox.Select();
         }
 
@@ -55,11 +57,6 @@ namespace BullsNCows
                 var caption = "Добро пожаловать в обучение!";
                 MessageBox.Show(text, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void GameWindow_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
         }
 
         private void GameWindow_FormClosed(object sender, FormClosedEventArgs e)
@@ -101,6 +98,8 @@ namespace BullsNCows
                         DialogResult result = MessageBox.Show(message, title, MessageBoxButtons.OK);
                         if (result == DialogResult.OK)
                         {
+                            if(!isTraining)
+                                controller.SaveGame();
                             this.Close();
                         }
                     }
@@ -194,6 +193,42 @@ namespace BullsNCows
                 bulls += i.ToString() + " ";
             }
             MessageBox.Show(string.Format("Коровы: {0}\r\nБыки: {1}", cows, bulls));
-        }       
+        }
+
+        /// <summary>
+        /// Расшифровка цвета цифры в режиме обучения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LabelNumberEnter(object sender, EventArgs e)
+        {
+            if (((Label)sender).ForeColor == Color.Green)
+            {
+                toolTip1.SetToolTip((Label)sender, "Бык");
+            }
+            if (((Label)sender).ForeColor == Color.Orange)
+            {
+                toolTip1.SetToolTip((Label)sender, "Корова");
+            }
+        }
+
+        private void SaveGameButton_Click(object sender, EventArgs e)
+        {
+            if(history.Count > 0)
+            {
+                controller.SaveGame();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Нет ходов!");
+                inputTextBox.Select();
+            }
+        }
+
+        private void SaveGameButton_MouseEnter(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip((MaterialSkin.Controls.MaterialRaisedButton)sender, "Сохранить и выйти");
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BullsNCows
 {
-    class Game
+    public class Game
     {
         /// <summary>
         /// Имя игрока
@@ -23,7 +23,11 @@ namespace BullsNCows
         /// <summary>
         /// Счет игрока
         /// </summary>
-        private int Score;
+        public int Score { get; set; }
+
+        public List<string> History { get; set; }
+
+        private Dictionary<string, int[]> CowsBulls;
 
         /// <summary>
         /// Создание экземпляра игры с именем игрока
@@ -32,6 +36,8 @@ namespace BullsNCows
         public Game(string name)
         {
             Name = name;
+            History = new List<string>();
+            CowsBulls = new Dictionary<string, int[]>();
         }
 
         /// <summary>
@@ -41,7 +47,9 @@ namespace BullsNCows
         public Dictionary<string, int[]> CheckNumber(int[] _Number)
         {
             Number = _Number;
-            return NumChecker.CheckNumber(Answer, Number);
+            CowsBulls = NumChecker.CheckNumber(Answer, Number);
+            SaveScore();
+            return CowsBulls;
         }
 
         /// <summary>
@@ -67,6 +75,12 @@ namespace BullsNCows
         private void SaveScore()
         {
             Score += 1;
+            History.Insert(0,
+                String.Format("{0} {1} {2}",
+                    String.Join("",Number),
+                    CowsBulls["Bulls"].Count(x => x ==1), 
+                    CowsBulls["Cows"].Count(x => x == 1))
+                );
         }
     }
 }

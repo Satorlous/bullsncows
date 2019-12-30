@@ -126,6 +126,7 @@
             this.Name = "Parent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Игра \"Быки и Коровы\"";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Parent_FormClosing);
             this.Load += new System.EventHandler(this.Parent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

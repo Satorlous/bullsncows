@@ -19,12 +19,12 @@ namespace BullsNCows
         /// <summary>
         /// Длина возвращаемого числа 
         /// </summary>
-        private const int LengthNumber = 4;
+        private const int NumberLength = 4;
 
         /// <summary>
         /// Массив с возвращаемым числом
         /// </summary>
-        private static int[] Number = new int[LengthNumber];
+        private static int[] Number = new int[NumberLength];
 
         /// <summary>
         /// Максимальное значение для генерации
@@ -34,43 +34,37 @@ namespace BullsNCows
         /// <summary>
         /// Минимальное значение для генерации
         /// </summary>
-        private const int Min = 1;
+        private const int Min = 0;
 
         /// <summary>
         /// Возврат случайно сгенерированного числа
         /// </summary>
-        /// <returns>4 значное число в виде 4 размерного массиве</returns>
+        /// <returns>Четырехзначное число в виде массива длиной 4</returns>
         public static int[] GetNumber()
         {
-            Number = new int[LengthNumber];
-            Number[LengthNumber - 1] = Max;
+            Number = new int[NumberLength];
+            Number[NumberLength - 1] = Max;
             int current = 0;
-            while (Number[LengthNumber - 1] == Max)
-            {
-                int buf = rand.Next(Min, Max);
+            while (Number[NumberLength - 1] == Max)
+            {                
+                int buf = current != 0 ? rand.Next(Min, Max) : rand.Next(Min + 1, Max);
                 if (CheckNumber(buf) != Max)
-                {
+                {                   
                     Number[current++] = buf;
                 }
             }
-            return Number;
+            return Number;           
         }
 
         /// <summary>
-        /// Проверка числа на уникальность
+        /// Проверка цифры на уникальность в числе
         /// </summary>
-        /// <param name="_number">Число для проверки на уникальность</param>
-        /// <returns></returns>
+        /// <param name="_number">Цифра для проверки на уникальность в числе</param>
         private static int CheckNumber(int _number)
         {
-            if (Number.Contains(_number))
-            {
-                return Max;
-            }
-            else
-            {
-                return _number;
-            }
+            if (Number.Contains(_number))          
+                return Max;                      
+            return _number;           
         }
     }
 }

@@ -12,9 +12,7 @@ namespace BullsNCows
         /// Экземпляр игры
         /// </summary>
         private Game Game;
-        /// <summary>
-        /// Экземпляр журнала
-        /// </summary>
+
         private Journal Journal;
 
         /// <summary>
@@ -24,8 +22,8 @@ namespace BullsNCows
         public void StartGame(string name)
         {
             Game = new Game(name);
-            Journal = new Journal();
             Game.StartGame();
+            Journal = new Journal();
         }
 
         /// <summary>
@@ -66,7 +64,7 @@ namespace BullsNCows
         /// </summary>
         public void SaveGame()
         {
-
+            Journal.SaveGame(Game);
         }
 
         /// <summary>

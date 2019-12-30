@@ -62,5 +62,8 @@ namespace BullsNCows
             gameWindow.Show();
         }
 
+        private void Parent_FormClosing(object sender, FormClosingEventArgs e)
+        {
+        }
     }
 }

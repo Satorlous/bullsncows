@@ -31,6 +31,7 @@ namespace BullsNCows
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameWindow));
             this.labelNum1 = new System.Windows.Forms.Label();
             this.labelNum2 = new System.Windows.Forms.Label();
@@ -44,6 +45,8 @@ namespace BullsNCows
             this.inputTextBoxPanel = new System.Windows.Forms.Panel();
             this.inputTextBox = new System.Windows.Forms.RichTextBox();
             this.lastNumberPanel = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.SaveGameButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.footerPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.headerPanel.SuspendLayout();
@@ -58,6 +61,7 @@ namespace BullsNCows
             this.labelNum1.Name = "labelNum1";
             this.labelNum1.Size = new System.Drawing.Size(0, 20);
             this.labelNum1.TabIndex = 0;
+            this.labelNum1.MouseEnter += new System.EventHandler(this.LabelNumberEnter);
             // 
             // labelNum2
             // 
@@ -66,6 +70,7 @@ namespace BullsNCows
             this.labelNum2.Name = "labelNum2";
             this.labelNum2.Size = new System.Drawing.Size(0, 20);
             this.labelNum2.TabIndex = 0;
+            this.labelNum2.MouseEnter += new System.EventHandler(this.LabelNumberEnter);
             // 
             // labelNum3
             // 
@@ -74,6 +79,7 @@ namespace BullsNCows
             this.labelNum3.Name = "labelNum3";
             this.labelNum3.Size = new System.Drawing.Size(0, 20);
             this.labelNum3.TabIndex = 0;
+            this.labelNum3.MouseEnter += new System.EventHandler(this.LabelNumberEnter);
             // 
             // labelNum4
             // 
@@ -82,9 +88,11 @@ namespace BullsNCows
             this.labelNum4.Name = "labelNum4";
             this.labelNum4.Size = new System.Drawing.Size(0, 20);
             this.labelNum4.TabIndex = 0;
+            this.labelNum4.MouseEnter += new System.EventHandler(this.LabelNumberEnter);
             // 
             // footerPanel
             // 
+            this.footerPanel.Controls.Add(this.SaveGameButton);
             this.footerPanel.Controls.Add(this.tipToggler);
             this.footerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.footerPanel.Location = new System.Drawing.Point(0, 311);
@@ -181,6 +189,21 @@ namespace BullsNCows
             this.lastNumberPanel.TabIndex = 4;
             this.lastNumberPanel.Visible = false;
             // 
+            // SaveGameButton
+            // 
+            this.SaveGameButton.Depth = 0;
+            this.SaveGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SaveGameButton.Location = new System.Drawing.Point(209, 14);
+            this.SaveGameButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SaveGameButton.Name = "SaveGameButton";
+            this.SaveGameButton.Primary = true;
+            this.SaveGameButton.Size = new System.Drawing.Size(86, 23);
+            this.SaveGameButton.TabIndex = 4;
+            this.SaveGameButton.Text = "Сохранить";
+            this.SaveGameButton.UseVisualStyleBackColor = true;
+            this.SaveGameButton.Click += new System.EventHandler(this.SaveGameButton_Click);
+            this.SaveGameButton.MouseEnter += new System.EventHandler(this.SaveGameButton_MouseEnter);
+            // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -223,5 +246,7 @@ namespace BullsNCows
         private System.Windows.Forms.Panel inputTextBoxPanel;
         private System.Windows.Forms.RichTextBox inputTextBox;
         private MaterialSkin.Controls.MaterialCheckBox tipToggler;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private MaterialSkin.Controls.MaterialRaisedButton SaveGameButton;
     }
 }

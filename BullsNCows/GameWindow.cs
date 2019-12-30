@@ -28,6 +28,7 @@ namespace BullsNCows
             controller = new Controller();
             history = new List<string>();
             currentNumberLabels = new List<Label>();
+
         }
 
         private void GameWindow_Load(object sender, EventArgs e)
@@ -144,7 +145,6 @@ namespace BullsNCows
                 }
             }
         }
-
         private void HideTip()
         {
             foreach (var label in currentNumberLabels)

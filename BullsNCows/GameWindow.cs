@@ -101,7 +101,7 @@ namespace BullsNCows
                         DialogResult result = MessageBox.Show(message, title, MessageBoxButtons.OK);
                         if (result == DialogResult.OK)
                         {
-                            controller.SaveGame();
+                            controller.SaveGame(number);
                             this.Close();
                         }
                     }
@@ -218,7 +218,7 @@ namespace BullsNCows
         {
             if(history.Count > 0)
             {
-                controller.SaveGame();
+                controller.SaveGame(history[0]);
                 this.Close();
             }
             else

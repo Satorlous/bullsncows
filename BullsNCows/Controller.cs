@@ -62,8 +62,13 @@ namespace BullsNCows
         /// <summary>
         /// Сохранить игру
         /// </summary>
-        public void SaveGame()
+        public void SaveGame(string number)
         {
+            Game.EndGame = false;
+            if (CheckNumber(number)["Bulls"].Count(x => x == 1) == 4)
+            {
+                Game.EndGame = true;
+            }
             Journal.SaveGame(Game);
         }
 

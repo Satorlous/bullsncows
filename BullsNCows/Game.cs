@@ -24,6 +24,10 @@ namespace BullsNCows
         /// Счет игрока
         /// </summary>
         public int Score { get; set; }
+        /// <summary>
+        /// Закончилась игра или нет
+        /// </summary>
+        public bool EndGame { get; set; }
 
         public List<string> History { get; set; }
 

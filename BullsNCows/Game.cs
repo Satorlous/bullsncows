@@ -11,7 +11,7 @@ namespace BullsNCows
         /// <summary>
         /// Имя игрока
         /// </summary>
-        public string Name { get; }
+        public string PlayerName { get; }
         /// <summary>
         /// Сгенерированное число
         /// </summary>
@@ -24,6 +24,10 @@ namespace BullsNCows
         /// Счет игрока
         /// </summary>
         public int Score { get; set; }
+        /// <summary>
+        /// Закончилась игра или нет
+        /// </summary>
+        public bool EndGame { get; set; }
 
         public List<string> History { get; set; }
 
@@ -32,10 +36,10 @@ namespace BullsNCows
         /// <summary>
         /// Создание экземпляра игры с именем игрока
         /// </summary>
-        /// <param name="name">Имя игрока</param>
-        public Game(string name)
+        /// <param name="playername">Имя игрока</param>
+        public Game(string playername)
         {
-            Name = name;
+            PlayerName = playername;
             History = new List<string>();
             CowsBulls = new Dictionary<string, int[]>();
         }

@@ -216,7 +216,7 @@ namespace BullsNCows
         {
             if(history.Count > 0)
             {
-                controller.SaveGame();
+                controller.SaveGame(history[0]);
                 this.Close();
             }
             else

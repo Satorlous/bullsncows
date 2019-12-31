@@ -12,6 +12,7 @@ namespace BullsNCows
 {
     public partial class GameWindow : MaterialSkin.Controls.MaterialForm
     {
+        public int IdGame = -1;
         public string number;
         private List<string> history;
         private string playerName;
@@ -47,6 +48,25 @@ namespace BullsNCows
             currentNumberLabels.Add(labelNum4);
             controller.StartGame(playerName);
             inputTextBox.Select();
+            if(IdGame > -1)
+            {
+                LoadGame();
+            }
+        }
+
+        private void LoadGame()
+        {
+            List<string> History = controller.LoadGame(IdGame);
+            int current = 0;
+            for(int  i = History.Count -1;i >= 0; i--)
+            {
+                var item = History[i];
+                var items = item.Split(new char[] { ' ' });
+                string text = string.Format("{0}. {1,-12:N10} Быков: {2}, Коров: {3}", 
+                    ++current, items[0], items[1], items[2]);
+                inputListBox.Items.Insert(0,text);
+                history.Insert(0,text);
+            }
         }
 
         private void GameWindow_Shown(object sender, EventArgs e)
@@ -99,7 +119,7 @@ namespace BullsNCows
                         if (result == DialogResult.OK)
                         {
                             if(!isTraining)
-                                controller.SaveGame();
+                                controller.SaveGame(number);
                             this.Close();
                         }
                     }

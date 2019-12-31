@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using Newtonsoft.Json;
 
 namespace BullsNCows
 {
@@ -13,7 +15,7 @@ namespace BullsNCows
         /// </summary>
         private Game Game;
 
-        private Journal Journal;
+        private static Journal Journal = new Journal();
 
         /// <summary>
         /// Старт игры
@@ -23,7 +25,6 @@ namespace BullsNCows
         {
             Game = new Game(name);
             Game.StartGame();
-            Journal = new Journal();
         }
 
         /// <summary>
@@ -76,17 +77,44 @@ namespace BullsNCows
         /// Загрузить игру
         /// </summary>
         /// <param name="IdGame">Id загружаемой игры</param>
-        public void LoadGame(int IdGame)
+        public List<string> LoadGame(int IdGame)
         {
-
+            Journal journal = Journal.LoadGame(IdGame);
+            int[] answer = new int[4];
+            int currnet = 0;
+            foreach (var item in journal.Answer)
+            {
+                answer[currnet++] = int.Parse(item.ToString());
+            }
+            var history = JsonConvert.DeserializeObject<List<string>>(journal.History);
+            Game = new Game { Answer = answer, PlayerName = journal.Name, Score = journal.Score, History = history};
+            return history;
         }
 
         /// <summary>
         /// Получить сохраненные игры
         /// </summary>
-        public void GetGames()
+        public object GetGames(bool StatusGames,string PlayerName = null)
         {
-
+            var response = Journal.GetGames(StatusGames,PlayerName);
+            if (response is string)
+            {
+                return response;
+            }
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Id",typeof(int));
+            dataTable.Columns["Id"].Caption = "ID";
+            dataTable.Columns.Add("Name", typeof(string));
+            dataTable.Columns["Name"].Caption = "Игрок";
+            dataTable.Columns.Add("DateTime", typeof(DateTime));
+            dataTable.Columns["DateTime"].Caption = "Дата игры";
+            dataTable.Columns.Add("Score", typeof(int));
+            dataTable.Columns["Score"].Caption = "Счет";
+            foreach (var Item in (List<Journal>)response)
+            {
+                dataTable.Rows.Add(Item.Id, Item.Name, Item.DateTime, Item.Score);
+            }
+            return dataTable;
         }
     }
 }

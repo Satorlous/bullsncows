@@ -11,7 +11,7 @@ namespace BullsNCows
         /// <summary>
         /// Имя игрока
         /// </summary>
-        public string PlayerName { get; }
+        public string PlayerName { get; set; }
         /// <summary>
         /// Сгенерированное число
         /// </summary>
@@ -32,6 +32,8 @@ namespace BullsNCows
         public List<string> History { get; set; }
 
         private Dictionary<string, int[]> CowsBulls;
+
+        public Game() { }
 
         /// <summary>
         /// Создание экземпляра игры с именем игрока

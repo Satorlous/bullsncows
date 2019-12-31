@@ -38,6 +38,7 @@ namespace BullsNCows
             this.labelNum3 = new System.Windows.Forms.Label();
             this.labelNum4 = new System.Windows.Forms.Label();
             this.footerPanel = new System.Windows.Forms.Panel();
+            this.SaveGameButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tipToggler = new MaterialSkin.Controls.MaterialCheckBox();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.inputListBox = new System.Windows.Forms.ListBox();
@@ -46,7 +47,6 @@ namespace BullsNCows
             this.inputTextBox = new System.Windows.Forms.RichTextBox();
             this.lastNumberPanel = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.SaveGameButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.footerPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.headerPanel.SuspendLayout();
@@ -100,6 +100,22 @@ namespace BullsNCows
             this.footerPanel.Name = "footerPanel";
             this.footerPanel.Size = new System.Drawing.Size(307, 53);
             this.footerPanel.TabIndex = 0;
+            // 
+            // SaveGameButton
+            // 
+            this.SaveGameButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SaveGameButton.Depth = 0;
+            this.SaveGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SaveGameButton.Location = new System.Drawing.Point(209, 14);
+            this.SaveGameButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SaveGameButton.Name = "SaveGameButton";
+            this.SaveGameButton.Primary = true;
+            this.SaveGameButton.Size = new System.Drawing.Size(86, 23);
+            this.SaveGameButton.TabIndex = 4;
+            this.SaveGameButton.Text = "Сохранить";
+            this.SaveGameButton.UseVisualStyleBackColor = true;
+            this.SaveGameButton.Click += new System.EventHandler(this.SaveGameButton_Click);
+            this.SaveGameButton.MouseEnter += new System.EventHandler(this.SaveGameButton_MouseEnter);
             // 
             // tipToggler
             // 
@@ -188,21 +204,6 @@ namespace BullsNCows
             this.lastNumberPanel.Size = new System.Drawing.Size(98, 49);
             this.lastNumberPanel.TabIndex = 4;
             this.lastNumberPanel.Visible = false;
-            // 
-            // SaveGameButton
-            // 
-            this.SaveGameButton.Depth = 0;
-            this.SaveGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SaveGameButton.Location = new System.Drawing.Point(209, 14);
-            this.SaveGameButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.SaveGameButton.Name = "SaveGameButton";
-            this.SaveGameButton.Primary = true;
-            this.SaveGameButton.Size = new System.Drawing.Size(86, 23);
-            this.SaveGameButton.TabIndex = 4;
-            this.SaveGameButton.Text = "Сохранить";
-            this.SaveGameButton.UseVisualStyleBackColor = true;
-            this.SaveGameButton.Click += new System.EventHandler(this.SaveGameButton_Click);
-            this.SaveGameButton.MouseEnter += new System.EventHandler(this.SaveGameButton_MouseEnter);
             // 
             // GameWindow
             // 

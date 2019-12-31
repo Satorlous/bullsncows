@@ -29,9 +29,29 @@ namespace BullsNCows
 
         public bool End { get; set; }
 
+        /// <summary>
+        /// Созранение игры
+        /// </summary>
+        /// <param name="game">Экземпляр игры</param>
         public void SaveGame(Game game)
         {
             JournalContext.Add(game);
+        }
+
+        /// <summary>
+        /// Загрузка игр
+        /// </summary>
+        /// <param name="StatusGames">Флаг состояния игр</param>
+        /// <returns></returns>
+        public object GetGames(bool StatusGames,string PlayerName = null)
+        {
+            return JournalContext.GetGames(PlayerName,StatusGames);
+        }
+
+        public Journal LoadGame(int IdGame)
+        {
+            Journal journal = JournalContext.Loadgame(IdGame);
+            return journal;
         }
     }
 }

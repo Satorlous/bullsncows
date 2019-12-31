@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using Newtonsoft.Json;
+using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace BullsNCows
 {
@@ -15,6 +17,49 @@ namespace BullsNCows
         { }
 
         public DbSet<Journal> Records { get; set; }
+
+        public static List<Journal> GetGames(string PlayerName = null,bool StatusGames = false)
+        {
+            using (JournalContext db = new JournalContext())
+            {
+                try
+                {
+                    db.Records.Load();
+                    int status = StatusGames ? 1 : 0;
+                    List<Journal> result = null;
+                    if(PlayerName is null)
+                    {
+                        result = db.Records.Local.Where(x => x.End == StatusGames).OrderBy(x => x.Score).ToList();
+                    }
+                    else
+                    {
+                        result = db.Records.Local.Where(x => x.End == StatusGames && x.Name == PlayerName).ToList();
+                    }
+                    return result;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static Journal Loadgame(int IdGame)
+        {
+            using (JournalContext db = new JournalContext())
+            {
+                try
+                {
+                    db.Records.Load();
+                    Journal result = db.Records.Local.Where(x => x.Id == IdGame).First();
+                    return result;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
 
         /// <summary>
         /// Сохранение игры

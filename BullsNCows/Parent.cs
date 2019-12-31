@@ -45,8 +45,20 @@ namespace BullsNCows
         /// <param name="e"></param>
         private void LoadGame(object sender, EventArgs e)
         {
-            LoadWindow loadWindow = new LoadWindow();
+            LoadWindow loadWindow = new LoadWindow(playerNameTextBox.Text);
             loadWindow.Show();
+            loadWindow.FormClosed += LoadWindow_FormClosed;
+        }
+
+        private void LoadWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var loadWindow = (LoadWindow)sender;
+            if(loadWindow.IdGame > -1)
+            {
+                GameWindow gameWindow = new GameWindow(playerNameTextBox.Text, false);
+                gameWindow.IdGame = loadWindow.IdGame;
+                gameWindow.Show();
+            }
         }
 
         /// <summary>

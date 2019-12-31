@@ -41,7 +41,7 @@ namespace BullsNCows
                         {
                             Answer = String.Join("", game.Answer),
                             DateTime = DateTime.Now,
-                            Name = game.Name,
+                            Name = game.PlayerName,
                             Score = game.Score,
                             History = JsonConvert.SerializeObject(game.History),
                             End = game.EndGame,

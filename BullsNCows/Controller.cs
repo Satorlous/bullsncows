@@ -80,6 +80,8 @@ namespace BullsNCows
         public List<string> LoadGame(int IdGame)
         {
             Journal journal = Journal.LoadGame(IdGame);
+            if (journal == null)
+                return null;
             int[] answer = new int[4];
             int currnet = 0;
             foreach (var item in journal.Answer)

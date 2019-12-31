@@ -29,6 +29,9 @@ namespace BullsNCows
             controller = new Controller();
             LoadGamesGridView.DataSource = controller.GetGames(false,this.PlayerName);
             LoadGamesGridView.Columns["Id"].Visible = false;
+            LoadGamesGridView.Columns["Name"].HeaderText = "Игрок";
+            LoadGamesGridView.Columns["DateTime"].HeaderText = "Дата игры";
+            LoadGamesGridView.Columns["Score"].HeaderText = "Счет";
         }
 
         private void LoadWindow_FormClosed(object sender, FormClosedEventArgs e)

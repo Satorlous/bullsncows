@@ -29,8 +29,14 @@ namespace BullsNCows
         /// </summary>
         public bool EndGame { get; set; }
 
+        /// <summary>
+        /// История игры
+        /// </summary>
         public List<string> History { get; set; }
 
+        /// <summary>
+        /// Данные по быкам и коровам
+        /// </summary>
         private Dictionary<string, int[]> CowsBulls;
 
         public Game() { }

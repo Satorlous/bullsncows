@@ -54,9 +54,17 @@ namespace BullsNCows
             }
         }
 
+        /// <summary>
+        /// Загрузка игры
+        /// </summary>
         private void LoadGame()
         {
             List<string> History = controller.LoadGame(IdGame);
+            if(History is null)
+            {
+                MessageBox.Show("Не удалось подключиться к БД");
+                this.Close();
+            }
             int current = 0;
             for(int  i = History.Count -1;i >= 0; i--)
             {

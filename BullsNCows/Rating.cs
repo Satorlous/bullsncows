@@ -23,6 +23,9 @@ namespace BullsNCows
         {
             Program.Parent.Hide();
             RatingGridView.DataSource = controller.GetGames(true);
+            RatingGridView.Columns["Name"].HeaderText = "Игрок";
+            RatingGridView.Columns["DateTime"].HeaderText = "Дата игры";
+            RatingGridView.Columns["Score"].HeaderText = "Счет";
         }
 
         private void Rating_FormClosed(object sender, FormClosedEventArgs e)

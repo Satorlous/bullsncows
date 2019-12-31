@@ -28,53 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.RatingGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.RatingGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // RatingGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(54, 123);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(105, 85);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(117, 19);
-            this.materialLabel1.TabIndex = 1;
-            this.materialLabel1.Text = "Лучшие игроки";
+            this.RatingGridView.AllowUserToAddRows = false;
+            this.RatingGridView.AllowUserToDeleteRows = false;
+            this.RatingGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.RatingGridView.BackgroundColor = System.Drawing.Color.White;
+            this.RatingGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.RatingGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.RatingGridView.Location = new System.Drawing.Point(0, 64);
+            this.RatingGridView.Name = "RatingGridView";
+            this.RatingGridView.ReadOnly = true;
+            this.RatingGridView.Size = new System.Drawing.Size(373, 282);
+            this.RatingGridView.TabIndex = 0;
             // 
             // Rating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(373, 346);
-            this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.RatingGridView);
             this.Name = "Rating";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Rating";
+            this.Text = "Рейтинг";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Rating_FormClosed);
             this.Load += new System.EventHandler(this.Rating_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatingGridView)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.DataGridView RatingGridView;
     }
 }
